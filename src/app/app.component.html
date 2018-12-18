@@ -1,0 +1,10 @@
+<hello name="{{ name }}"></hello>
+<p>
+  <input type="text" placeholder="type address"  [(ngModel)]="address"  /> 
+  <button (click)="lookupAddress()">Search</button>
+</p>
+
+<div class="suggested-addresses" *ngFor="let address of suggestedAddresses"
+>
+  <div class="suggested-address">{{ address.text }}</div>
+</div>
