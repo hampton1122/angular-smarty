@@ -1,24 +1,26 @@
 import { Component } from '@angular/core';
 import * as SmartyStreetsSDK from 'smartystreets-javascript-sdk';
-import {Suggestion} from 'suggestion';
+import { Suggestion } from './suggestion';
 
 const SmartyStreetsCore = SmartyStreetsSDK.core;
 const LookupAuto = SmartyStreetsSDK.usAutocomplete.Lookup;
 const LookupStreet = SmartyStreetsSDK.usStreet.Lookup;
 
 @Component({
-  selector: 'my-app',
+  selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: [ './app.component.css' ]
+  styleUrls: ['./app.component.css']
 })
-export class AppComponent  {
+export class AppComponent {
   name = 'Angular';
   public address: string;
   public suggestedAddresses = new Array<Suggestion>();
 
   lookupAddress() {
     console.log(this.address);
-    const credentials = new SmartyStreetsCore.SharedCredentials('8608633705592383');
+    const credentials = new SmartyStreetsCore.SharedCredentials(
+      '8608633705592383'
+    );
     const clientBuilder = new SmartyStreetsCore.ClientBuilder(credentials);
     const client = clientBuilder.buildUsAutocompleteClient();
     const lookup = new LookupAuto(this.address);
